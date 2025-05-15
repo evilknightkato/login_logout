@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация пациента | MedPortal{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2><i class="fas fa-user-plus me-2"></i>Регистрация пациента</h2>
+      <p class="text-muted">Заполните форму для создания аккаунта</p>
+    </div>
+
+    <form method="post" class="auth-form">
+      {% csrf_token %}
+
+      <!-- Основные поля -->
+      <div class="mb-3">
+        <label for="username" class="form-label">
+          <i class="fas fa-user me-1"></i> Логин
+        </label>
+        <input type="text" class="form-control" id="username" name="username" required>
+        <div class="form-text">От 4 до 30 символов</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="first_name" class="form-label">
+            <i class="fas fa-id-card me-1"></i> Имя
+          </label>
+          <input type="text" class="form-control" id="first_name" name="first_name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="last_name" class="form-label">
+            <i class="fas fa-id-card me-1"></i> Фамилия
+          </label>
+          <input type="text" class="form-control" id="last_name" name="last_name">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          <i class="fas fa-envelope me-1"></i> Email
+        </label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">
+          <i class="fas fa-phone me-1"></i> Телефон
+        </label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+      </div>
+
+      <!-- Пароли -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="password1" class="form-label">
+            <i class="fas fa-lock me-1"></i> Пароль
+          </label>
+          <input type="password" class="form-control" id="password1" name="password1" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="password2" class="form-label">
+            <i class="fas fa-lock me-1"></i> Подтверждение
+          </label>
+          <input type="password" class="form-control" id="password2" name="password2" required>
+        </div>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="terms" required>
+        <label class="form-check-label" for="terms">
+          Я согласен с <a href="#">условиями использования</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 auth-submit">
+        <i class="fas fa-user-plus me-2"></i> Зарегистрироваться
+      </button>
+
+      <div class="auth-footer mt-3">
+        Уже есть аккаунт? <a href="{% url 'login' %}">Войдите</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
